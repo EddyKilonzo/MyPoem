@@ -4,10 +4,11 @@ const app = express();
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    console.log("hello");
+    
     res.render('home.ejs', {});
+    
 })
-app.get('')
+
 
 
 const port = 3000;

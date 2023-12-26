@@ -1,0 +1,28 @@
+
+/*variables */
+
+
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+nav {
+    width: 100%;
+    padding: 10px 0;
+    background-color: aliceblue;
+    
+}
+nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav .left {
+    
+    
+
+}

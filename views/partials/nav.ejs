@@ -1,24 +1,54 @@
 <%- include('./header') %>
     <nav>
-       <div class="conatainer">
+        <img src="images/pp_logo2.png" alt="">  
+       <div class="container">
             <div class="left">
-                <h2>MyPoem</h2>
+                <h2>PoeticPinnacle</h2>
             </div>
             <div class="right">
-                <li>
-                    <a href="">
-                        Home
-                    </a>
-                    <a href="">
-                        Poems
-                    </a>
-                    <a href="">
-                        Log-in
-                    </a>
-                    <a href="">
-                        Sign-Up
-                    </a>
-                </li>
+                <ul>
+                    <li>
+                        <a href="/">
+                            <div class="menu-item">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/laqlvddb.json"
+                                    trigger="hover"
+                                    stroke="light"
+                                    state="hover-partial-roll"
+                                    colors="primary:#121331,secondary:#00415a"
+                                    style="width:35px;height:35px">
+                                </lord-icon>
+                                <p>Home</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/poems">
+                            <div class="menu-item">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/wuvorxbv.json"
+                                    trigger="hover"
+                                    stroke="light"
+                                    state="in-reveal"
+                                    colors="primary:#121331,secondary:#00415a"
+                                    style="width:35px;height:35px">
+                                </lord-icon>
+                                <p>Poems</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="dropdown-container">
+                        <lord-icon
+                            src="https://cdn.lordicon.com/xzalkbkz.json"
+                            style="width:35px;height:35px">
+                        </lord-icon>
+                        <div class="dropdown-content">
+                            <a href="/login">Login</a>
+                            <a href="/signupk">SignUp</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
+            
        </div>
     </nav>

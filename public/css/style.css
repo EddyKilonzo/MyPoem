@@ -1,6 +1,5 @@
 
 /*variables */
-
     :root {
         --primary-color:#00415a;
         --secondary-color:#009bd6;
@@ -11,7 +10,7 @@
         scroll-behavior: smooth;
     }
     body{
-        background-color: rgb(231, 230, 230);
+        background-color: rgb(206, 206, 206);
     }
 
 *, ::before, ::after {
@@ -19,17 +18,20 @@
     padding: 0;
     box-sizing: border-box;
 }
+h2 {
+    color: var(--primary-color);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
 
 nav {
     width: 100%;
-    padding: 5px 0;
     background-color: rgb(240, 240, 240);
 }
 nav .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 20px
+    margin: 0 20px;
     
 }
 .left {
@@ -40,7 +42,6 @@ nav .container {
 }
 nav img {
     width: 4rem; 
-    margin-left:70px;
     height: auto; 
     margin-bottom: 0px; 
 }
@@ -52,12 +53,41 @@ nav h2 {
     /* Add any additional styling for the .right container here */
     
 }
-a {
+nav a {
     color: #001f2b;
+    text-decoration: none;
 }
+
+nav a:active,
+nav a.active {
+    color: var(--secondary-color);
+    position: relative;
+}
+
+nav a:hover {
+    color: var(--secondary-color);
+}
+
+nav li a::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Show the underline on hover and when active */
+nav li a:hover::after,
+nav li a.active::after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
 .menu-item p {
     text-decoration: none;
-
 }
 
 ul {
@@ -103,4 +133,92 @@ lord-icon {
     height: 35px;
     fill: #007bff;
     cursor: pointer;
+}
+/* FOOTER */
+footer {
+    width: 100vw;
+    background-color: whitesmoke;
+    position: absolute;
+    bottom: 0;
+    border-radius: 20px;
+}
+footer .container {
+    width: 91%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 20px;
+}
+footer .container .right img {
+    width: 100px;
+    height: auto;
+    margin-left: 40px;
+    
+}
+footer .container .right {
+    display: block;
+    margin-bottom: 40px;
+}
+footer .container .right a i {
+    color: var(--primary-color);
+    font-size: 25px;
+    padding: 10px;
+}
+footer .container .right a i:hover {
+    color: var(--secondary-color);
+    transition: 0.3s ease-in-out;
+}
+footer .container .left h2 {
+    margin-bottom: 20px;
+}
+footer .container .left input{
+    width: 180px;
+    height: 50px;
+    border-radius: 20px;
+    padding: 20px;
+    border: 2px solid rgb(226, 226, 226);
+    margin-top: 10px;
+
+}
+footer .container .left button {
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00415a;
+    border: none;
+    margin-top: 10px;
+    padding: 10px;
+    color: white;
+    margin-left: 90px;
+}
+footer .container .left button:hover {
+    background-color: white;
+    color: var(--primary-color);
+    transition: 0.3s ease-in-out;
+    
+}
+footer .container .center li {
+    list-style: none;
+    margin-top: 20px;
+}
+footer .container .center li a {
+    color: black;
+    text-decoration: none;
+    
+}
+footer .container .center li a:hover {
+    color: var(--secondary-color);
+    transition: 0.3s ease-in-out;
+}
+footer .copyright {
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    
+}
+footer .copyright p {
+    font-size: 18px;
+    color: rgb(199, 199, 199);
+    text-align: center;
+    font-family: serif;
 }

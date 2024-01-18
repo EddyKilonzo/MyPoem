@@ -1,14 +1,16 @@
 <%- include('./header') %>
     <nav>
-        <img src="images/pp_logo2.png" alt="">  
+        
        <div class="container">
+        
             <div class="left">
+                <img src="images/pp_logo2.png" alt="">  
                 <h2>PoeticPinnacle</h2>
             </div>
             <div class="right">
                 <ul>
                     <li>
-                        <a href="/">
+                        <a href="/" >
                             <div class="menu-item">
                                 <lord-icon
                                     src="https://cdn.lordicon.com/laqlvddb.json"
@@ -18,22 +20,22 @@
                                     colors="primary:#121331,secondary:#00415a"
                                     style="width:35px;height:35px">
                                 </lord-icon>
-                                <p>Home</p>
+                                <p id="home-link">Home</p>
                             </div>
                         </a>
                     </li>
                     <li>
-                        <a href="/poems">
+                        <a href="/poems" >
                             <div class="menu-item">
                                 <lord-icon
                                     src="https://cdn.lordicon.com/wuvorxbv.json"
                                     trigger="hover"
                                     stroke="light"
-                                    state="in-reveal"
+                                    state="hover"
                                     colors="primary:#121331,secondary:#00415a"
                                     style="width:35px;height:35px">
                                 </lord-icon>
-                                <p>Poems</p>
+                                <p id="poems-link">Poems</p>
                             </div>
                         </a>
                     </li>
@@ -42,9 +44,10 @@
                             src="https://cdn.lordicon.com/xzalkbkz.json"
                             style="width:35px;height:35px">
                         </lord-icon>
+                        <p>Profile</p>
                         <div class="dropdown-content">
                             <a href="/login">Login</a>
-                            <a href="/signupk">SignUp</a>
+                            <a href="/signup">SignUp</a>
                         </div>
                     </li>
                 </ul>

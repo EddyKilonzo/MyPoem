@@ -1,0 +1,61 @@
+<%- include('./partials/nav') %>
+
+    <body>
+        
+        <div class="container_form">
+            
+            <form action="/login" method="post">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <path fill="#00415a" fill-opacity="1" d="M0,192L1440,32L1440,0L0,0Z"></path>
+                  </svg>
+                <div class="ani1">
+                    <h2 >Create an Account</h2>
+                    <lord-icon
+                        src="https://cdn.lordicon.com/zrkkrrpl.json"
+                        trigger="in"
+                        stroke="light"
+                        state="hover-swirl"
+                        colors="primary:#00415a,secondary:#009bd6"
+                        style="width:100px;height:100px">
+                    </lord-icon>
+                </div>
+                <h2 style="display: flex;align-items: center;justify-content: center;">
+                    Signup
+                </h2>
+                <hr style="height: 3px; background-color: #00415a;margin-top: 10px;margin-bottom: 10px; margin: 30px;">
+                <div class="input">
+                    <div class="input-container">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="email" name="Username" id="" placeholder="Enter Username...">
+                    </div>
+                    <div class="input-container">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="email" name="email" id="" placeholder="Enter Email...">
+                    </div>
+                    
+                    <div class="input-container">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="text" name="Password" id="" placeholder="Enter Password...">
+                    </div>
+                    <div class="input-container">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="text" name="Password" id="" placeholder="Confirm Password...">
+                    </div>
+                    <div class="info">
+                        <input type="submit" value="Log-In" class="btn">
+                        <p>Already have an account? <a href="/login">Login</a> </p>
+                    </div>
+                    
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <path fill="#00415a" fill-opacity="1" d="M0,192L1440,32L1440,320L0,320Z"></path>
+                  </svg>
+            </form>
+            
+        </div>
+
+
+
+    </body>
+   <%- include('./partials/footer') %>
+   </html>

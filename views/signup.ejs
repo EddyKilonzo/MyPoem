@@ -4,12 +4,12 @@
         
         <div class="container_form">
             
-            <form action="/login" method="post">
+            <form action="/signup" method="post">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                     <path fill="#00415a" fill-opacity="1" d="M0,192L1440,32L1440,0L0,0Z"></path>
                   </svg>
                 <div class="ani1">
-                    <h2 >Create an Account</h2>
+                    <h2 style="letter-spacing: 2px;">Create an Account</h2>
                     <lord-icon
                         src="https://cdn.lordicon.com/zrkkrrpl.json"
                         trigger="in"
@@ -19,30 +19,35 @@
                         style="width:100px;height:100px">
                     </lord-icon>
                 </div>
-                <h2 style="display: flex;align-items: center;justify-content: center;">
-                    Signup
+                <h2 style="display: flex;align-items: center;justify-content: center; letter-spacing: 3px;">
+                    Sign Up
                 </h2>
                 <hr style="height: 3px; background-color: #00415a;margin-top: 10px;margin-bottom: 10px; margin: 30px;">
                 <div class="input">
                     <div class="input-container">
                         <i class="fa-solid fa-user"></i>
-                        <input type="email" name="Username" id="" placeholder="Enter Username...">
+                        <input type="email" name="Username" id="" placeholder="Enter Username..." required>
                     </div>
                     <div class="input-container">
                         <i class="fa-solid fa-user"></i>
-                        <input type="email" name="email" id="" placeholder="Enter Email...">
+                        <input type="email" name="email" id="" placeholder="Enter Email..." required>
                     </div>
                     
                     <div class="input-container">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="text" name="Password" id="" placeholder="Enter Password...">
+                        <input type="password" name="Password" id="" placeholder="Enter Password..." required>
                     </div>
                     <div class="input-container">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="text" name="Password" id="" placeholder="Confirm Password...">
+                        <input type="password" name="Password" id="" placeholder="Confirm Password..." required>
+                    </div>
+                    <div class="Remember">
+                        <input  type="checkbox" name="" id="" required>
+                        <p style="font-family: monospace; font-size: 14px; margin-left: 5px;">I agree with Privacy and policy</p>
+                       
                     </div>
                     <div class="info">
-                        <input type="submit" value="Log-In" class="btn">
+                        <input type="submit" value="Signup" class="btn" style="letter-spacing: 3px;">
                         <p>Already have an account? <a href="/login">Login</a> </p>
                     </div>
                     

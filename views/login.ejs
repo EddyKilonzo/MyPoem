@@ -7,7 +7,7 @@
             <form action="/login" method="post">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#00415a" fill-opacity="1" d="M0,0L80,32C160,64,320,128,480,133.3C640,139,800,85,960,69.3C1120,53,1280,75,1360,85.3L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
                 <div class="ani1">
-                    <h2>Welcome Back</h2>
+                    <h2 style="letter-spacing: 3px">Welcome Back</h2>
                     <lord-icon
                         src="https://cdn.lordicon.com/chkplqja.json"
                         trigger="in"
@@ -17,22 +17,31 @@
                         style="width:100px;height:100px">
                     </lord-icon>
                 </div>
-                <h2 style="display: flex;align-items: center;justify-content: center;">
+                <h2 style="display: flex;align-items: center;justify-content: center; letter-spacing: 3px;">
                     LOGIN
                 </h2>
                 <hr style="height: 3px; background-color: #00415a;margin-top: 10px;margin-bottom: 10px; margin: 30px;">
                 <div class="input">
                     <div class="input-container">
                         <i class="fa-solid fa-user"></i>
-                        <input type="email" name="email" id="" placeholder="Email...">
+                        <input type="email" name="email" id="" placeholder="Email..." required>
                     </div>
                     
                     <div class="input-container">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="text" name="Password" id="" placeholder="Enter Password...">
+                        <input type="password" name="Password" id="" placeholder="Enter Password..." required>
+                       
                     </div>
+                    <div class="Remember">
+                        <input  type="checkbox" name="" id="" required>
+                        <p style="font-family: monospace; font-size: 14px; margin-left: 5px;">Remember Me</p>
+                        
+                        <a href="">Forgot Password?</a>
+                       
+                    </div>
+
                     <div class="info">
-                        <input type="submit" value="Log-In" class="btn">
+                        <input type="submit" value="Log-In" class="btn" style="letter-spacing: 3px;">
                         <p>Don't have an account? <a href="/signup">Sign Up</a> </p>
                     </div>
                     

@@ -200,7 +200,7 @@ footer .container .left button {
     box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.25);
 }
 footer .container .left button:hover {
-    background-color: white;
+    background-color: var(--secondary-color);
     color: var(--primary-color);
     transition: 0.5s ease-in-out;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
@@ -218,8 +218,10 @@ footer .container .center li a {
 }
 footer .container .center li a:hover {
     color: var(--secondary-color);
-    transform: scale(1.5); 
+    transform: scaleX(1.5); 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    padding-left: 20px ;
+    transition: 300ms ease-in-out;
 
 }
 footer .copyright {
@@ -243,11 +245,12 @@ footer .copyright p {
     margin-bottom: 50px;
 }
 .container_form form {
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(240, 240, 240, 0.9);
     border-radius: 10px;
     box-shadow:
     2.8px 2.8px 2.2px rgba(0, 0, 0, 0.2),
-    6.8px 6.8px 5.2px rgba(0, 0, 0, 0.25);
+    6.8px 6.8px 5.2px rgba(0, 0, 0, 0.25),
+    16.8px 16.8px 25.2px rgba(0, 0, 0, 0.25);
 }
 .container_form .ani1 {
     display: flex;
@@ -264,14 +267,15 @@ footer .copyright p {
 .input-container {
     position: relative;
     display: inline-block;
-    margin-bottom: 10px
+    margin-bottom: 15px
 }
 .input-container input {
     width: 300px;
     height: 35px;
     border: none ;
     border-radius: 10px;
-    box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.2);  
+    box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.2),
+                4.8px 4.8px 6.2px rgba(0, 0, 0, 0.25)  
 }
 .input-container input::placeholder {
     color: var(--primary-color);
@@ -317,6 +321,22 @@ footer .copyright p {
     color: var(--primary-color);
 }
 .input .info p a:hover {
+    color: var(--secondary-color);
+    transition: 0.5s ease-in-out;
+}
+.Remember {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     margin-top: 10px; 
+}
+.Remember a{
+    color: var(--primary-color);
+    margin-left: 40px;
+    text-decoration: none;
+    font-size: 14px;
+}
+.Remember a:hover {
     color: var(--secondary-color);
     transition: 0.5s ease-in-out;
 }

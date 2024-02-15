@@ -18,6 +18,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+.error-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    font-family: monospace;
+    letter-spacing: 1px;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
 h2 {
     color: var(--primary-color);
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -48,10 +58,6 @@ nav img {
 nav h2 {
     font-family: 'Sevillana', ;
     font-size: 30px;
-}
-.right {
-    /* Add any additional styling for the .right container here */
-    
 }
 nav a {
     color: #001f2b;

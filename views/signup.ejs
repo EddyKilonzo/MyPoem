@@ -19,27 +19,31 @@
                         style="width:100px;height:100px">
                     </lord-icon>
                 </div>
+                
                 <h2 style="display: flex;align-items: center;justify-content: center; letter-spacing: 3px;">
                     Sign Up
                 </h2>
+                
                 <hr style="height: 3px; background-color: #00415a;margin-top: 10px;margin-bottom: 10px; margin: 30px;">
+                <% if (error) { %>
+                    <p class="error-message"><%= errorMessage %></p>
+                <% } %>
                 <div class="input">
                     <div class="input-container">
                         <i class="fa-solid fa-user"></i>
-                        <input type="email" name="Username" id="" placeholder="Enter Username..." required>
+                        <input type="email" name="email"  required placeholder="Enter Email..." >
                     </div>
                     <div class="input-container">
                         <i class="fa-solid fa-user"></i>
-                        <input type="email" name="email" id="" placeholder="Enter Email..." required>
-                    </div>
-                    
-                    <div class="input-container">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" name="Password" id="" placeholder="Enter Password..." required>
+                        <input type="text" name="username"  required placeholder="Enter Username...">
                     </div>
                     <div class="input-container">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" name="Password" id="" placeholder="Confirm Password..." required>
+                        <input type="password" name="password"   minlength="8" required   placeholder="Enter Password..." >
+                    </div>
+                    <div class="input-container">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="confirmPassword"   minlength="8" required placeholder="Confirm Password..." >
                     </div>
                     <div class="Remember">
                         <input  type="checkbox" name="" id="" required>

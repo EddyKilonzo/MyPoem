@@ -25,6 +25,7 @@
                         </a>
                     </li>
                     <li>
+                        <% if(locals.isLoggedIn) { %>
                         <a href="/poems" >
                             <div class="menu-item">
                                 <lord-icon
@@ -39,6 +40,9 @@
                             </div>
                         </a>
                     </li>
+                    <li class="nav-link"><a href="/profile/<%= locals.userID %>">Profile</a></li>
+                    <li class="nav-link"><a href="/logout">Logout</a></li>
+                    <% } else {%>
                     <li class="dropdown-container">
                         <lord-icon
                             src="https://cdn.lordicon.com/xzalkbkz.json"
@@ -50,6 +54,7 @@
                             <a href="/signup">SignUp</a>
                         </div>
                     </li>
+                    <% } %>
                 </ul>
             </div>
             

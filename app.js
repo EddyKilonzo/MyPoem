@@ -11,6 +11,14 @@ const connection = mysql.createConnection({
   password:'',
   database: 'Poeticpinnacle'
 });
+// Connect to MySQL
+connection.connect((err) => {
+    if (err) {
+      console.error('Error connecting to database:', err);
+      return;
+    }
+    console.log('Connected to database');
+  });
 
 //static files
 import { fileURLToPath } from 'url';
@@ -48,16 +56,7 @@ app.use((req, res, next) => {
 
 
 
-app.get('/', (req, res) => {
-    
-    res.render('home.ejs', {});
-    
-})
-app.get('/poems', (req, res) => {
-    
-  res.render('poems.ejs', {});
-  
-})
+
 app.get('/login', (req, res) => {
   if(res.locals.isLoggedIn) {
       res.redirect('/')
@@ -65,57 +64,41 @@ app.get('/login', (req, res) => {
       res.render('login.ejs', {error: false})
   }
 });
-app.post('/login', (req, res) => {
-  let email = req.body.email;
-  let password = req.body.password;
-
-  connection.query(
-      'SELECT * FROM users WHERE email = ?',
-      [email],
-      (error, results) => {
-          if (error) {
-              console.error('Error retrieving user:', error);
-              res.status(500).send('Internal Server Error');
-              return;
-          }
-
-          if (results.length > 0) {
-              bcrypt.compare(password, results[0].password, (error, isEqual) => {
-                  if (error) {
-                      console.error('Error comparing passwords:', error);
-                      res.status(500).send('Internal Server Error');
-                      return;
-                  }
-
-                  if (isEqual) {
-                      // Set session variables
-                      // req.session.userID = results[0].id;
-                      // req.session.username = results[0].username;
-
-                      // Redirect to profile page with user ID
-                      res.redirect('/' );
-                  } else {
-                      let message = 'Email/password mismatch.';
-                      res.render('login.ejs', {
-                          error: true,
-                          errorMessage: message,
-                          email: email,
-                          password: password
-                      });
-                  }
-              });
-          } else {
-              let message = 'Account does not exist. Please create one.';
-              res.render('login.ejs', {
-                  error: true,
-                  errorMessage: message,
-                  email: email,
-                  password: password
-              });
-          }
-      }
-  );
-});
+app.post('/login', (req, res) => {  
+    let email = req.body.email
+    let password = req.body.password
+    connection.query(
+        'SELECT * FROM users WHERE email = ?',
+        [email],
+        (error, results) => {
+            if(results.length > 0) {
+                bcrypt.compare(password, results[0].password, (error, isEqual) => {
+                    if(isEqual) {
+                        req.session.userID = results[0].id;
+                        req.session.username = results[0].username;
+                        res.redirect('/');
+                    } else {
+                        let message = 'Email/password mismatch.'
+                        res.render('login.ejs', {
+                            error: true,
+                            errorMessage: message,
+                            email: email,
+                            password: password
+                        });
+                    }
+                })
+            } else {
+                let message = 'Account does not exist. Please create one.'
+                res.render('login.ejs', {
+                    error: true,
+                    errorMessage: message,
+                    email: email,
+                    password: password
+                 });
+            }
+        }
+    );
+})
 
 app.get('/signup', (req, res) => {
 
@@ -199,7 +182,16 @@ app.post("/signup", (req, res) =>{
   }
 });
 
-
+app.get('/', (req, res) => {
+    
+    res.render('home.ejs', {});
+    
+})
+app.get('/poems', (req, res) => {
+    
+  res.render('poems.ejs', {});
+  
+})
 
 app.get('*', (req, res) => {
     res.render('404.ejs')

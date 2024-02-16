@@ -1,6 +1,5 @@
 import  express  from "express";
 import mysql from "mysql";
-import bcrypt from "bcrypt";
 import session  from "express-session";
 const port = 3000;
 
@@ -36,12 +35,13 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: false}))
 
-
+// const session = require('express-session');
 app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false
-}))
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: false
+}));
+
 
 app.use((req, res, next) => {
   if(req.session.userID === undefined) {
@@ -64,41 +64,31 @@ app.get('/login', (req, res) => {
       res.render('login.ejs', {error: false})
   }
 });
-app.post('/login', (req, res) => {  
-    let email = req.body.email
-    let password = req.body.password
+app.post('/login', (req, res) => {
+    let email = req.body.email;
+    let password = req.body.password;
     connection.query(
-        'SELECT * FROM users WHERE email = ?',
-        [email],
+        'SELECT * FROM users WHERE email = ? AND password = ?',
+        [email, password],
         (error, results) => {
-            if(results.length > 0) {
-                bcrypt.compare(password, results[0].password, (error, isEqual) => {
-                    if(isEqual) {
-                        req.session.userID = results[0].id;
-                        req.session.username = results[0].username;
-                        res.redirect('/');
-                    } else {
-                        let message = 'Email/password mismatch.'
-                        res.render('login.ejs', {
-                            error: true,
-                            errorMessage: message,
-                            email: email,
-                            password: password
-                        });
-                    }
-                })
+            if (results.length > 0) {
+                req.session.userID = results[0]['UserID Primary'];
+                req.session.username = results[0].username;
+                req.session.isLoggedIn = true; 
+                console.log(results);
+                res.redirect('/');
             } else {
-                let message = 'Account does not exist. Please create one.'
+                let message = 'Email/password mismatch.';
                 res.render('login.ejs', {
                     error: true,
                     errorMessage: message,
                     email: email,
                     password: password
-                 });
+                });
             }
         }
     );
-})
+});
 
 app.get('/signup', (req, res) => {
 
@@ -112,76 +102,73 @@ app.get('/signup', (req, res) => {
 res.render('signup.ejs', {error:false, user: user})
 
 })
-app.post("/signup", (req, res) =>{
-  let email = req.body.email;
-  let username = req.body.username;
-  let password = req.body.password;
-  let confirmPassword = req.body.confirmPassword;
-  
+app.post("/signup", (req, res) => {
+    let email = req.body.email;
+    let username = req.body.username;
+    let password = req.body.password;
+    let confirmPassword = req.body.confirmPassword;
 
-  if (password === confirmPassword) {
-      bcrypt.hash(password, 10, (error, hash) => {
-          if (error) {
-              // Handle bcrypt hashing error
-              console.error("Error hashing password:", error);
-              res.status(500).send("Internal Server Error");
-              return;
-          }
+    if (password !== confirmPassword) {
+        let message = 'Password & Confirm Password do not match.';
+        return res.render('signup.ejs', {
+            error: true,
+            errorMessage: message,
+            email: email,
+            username: username,
+            password: password,
+            confirmPassword: confirmPassword
+        });
+    }
 
-          connection.query(
-              'SELECT email FROM users WHERE email = ?',
-              [email],
-              (error, results) => {
-                  if (error) {
-                      // Handle database query error
-                      console.error("Error querying database:", error);
-                      res.status(500).send("Internal Server Error");
-                      return;
-                  }
+    connection.query(
+        'SELECT email FROM users WHERE email = ?',
+        [email],
+        (error, results) => {
+            if (error) {
+                console.error("Error querying database:", error);
+                return res.status(500).send("Internal Server Error");
+            }
 
-                  if (results.length === 0) {
-                      connection.query(
-                          'INSERT INTO users (email, username, password) VALUES (?, ?, ?)',
-                          [email, username, hash],
-                          (error, results) => {
-                              if (error) {
-                                  // Handle database insertion error
-                                  console.error("Error inserting user into database:", error);
-                                  res.status(500).send("Internal Server Error");
-                                  return;
-                              }
+            if (results.length === 0) {
+                connection.query(
+                    'INSERT INTO users (email, username, password) VALUES (?, ?, ?)',
+                    [email, username, password], // Note: Storing password in plain text
+                    (error, results) => {
+                        if (error) {
+                            console.error("Error inserting user into database:", error);
+                            return res.status(500).send("Internal Server Error");
+                        }
+                        // Set session variables upon successful signup
+                        // req.session.userID = results.insertId; // Assuming insertId is the ID of the newly inserted user
+                        // req.session.username = username;
 
-                              // Redirect to login page after successful signup
-                              res.redirect("/login");
-                          }
-                      );
-                  } else {
-                      let message = 'Email already exists.'
-                      res.render('signup.ejs', {
-                          error: true,
-                          errorMessage: message,
-                          email: email,
-                          username: username,
-                          password: password,
-                          confirmPassword: confirmPassword
-                      })
-                  }
-              }
-          );
-      });
-  } else {
-      let message = 'Password & Confirm Password do not match.'
-      res.render('signup.ejs', {
-          error: true,
-          errorMessage: message,
-          email: email,
-          username: username,
-          password: password,
-          confirmPassword: confirmPassword
-      });
-  }
+                        res.redirect("/login");
+                    }
+                );
+            } else {
+                let message = 'Email already exists.';
+                res.render('signup.ejs', {
+                    error: true,
+                    errorMessage: message,
+                    email: email,
+                    username: username,
+                    password: password,
+                    confirmPassword: confirmPassword
+                });
+            }
+        }
+    );
 });
-
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error destroying session:', err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+        res.redirect('/');
+    });
+});
 app.get('/', (req, res) => {
     
     res.render('home.ejs', {});

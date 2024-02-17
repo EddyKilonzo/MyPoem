@@ -20,13 +20,9 @@ connection.connect((err) => {
   });
 
 //static files
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-app.use('/css', express.static(__dirname + '/public/css'));
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+app.use(express.urlencoded({extended: false}))
 
 
 //templating engine
@@ -37,11 +33,11 @@ app.use(express.urlencoded({extended: false}))
 
 // const session = require('express-session');
 app.use(session({
-    secret: 'your_secret_key',
+    secret: 'your secret key',
     resave: false,
-    saveUninitialized: false
-}));
-
+    saveUninitialized: true,
+    cookie: { secure: false } 
+  }));
 
 app.use((req, res, next) => {
   if(req.session.userID === undefined) {
@@ -55,16 +51,15 @@ app.use((req, res, next) => {
 });
 
 
-
-
 app.get('/login', (req, res) => {
-  if(res.locals.isLoggedIn) {
-      res.redirect('/')
-  } else {
-      res.render('login.ejs', {error: false})
-  }
-});
-app.post('/login', (req, res) => {
+    if(req.session.isLoggedIn) {
+        res.redirect('/')
+    } else {
+        res.render('login.ejs', {error: false})
+    }
+  });
+  
+  app.post('/login', (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
     connection.query(
@@ -72,10 +67,11 @@ app.post('/login', (req, res) => {
         [email, password],
         (error, results) => {
             if (results.length > 0) {
-                req.session.userID = results[0]['UserID Primary'];
+                req.session.isLoggedIn = true;
+                req.session.userID = results[0].UserID; // Set the userID in the session
                 req.session.username = results[0].username;
-                req.session.isLoggedIn = true; 
                 console.log(results);
+                console.log(results[0].UserID);
                 res.redirect('/');
             } else {
                 let message = 'Email/password mismatch.';
@@ -89,6 +85,8 @@ app.post('/login', (req, res) => {
         }
     );
 });
+
+
 
 app.get('/signup', (req, res) => {
 
@@ -139,8 +137,8 @@ app.post("/signup", (req, res) => {
                             return res.status(500).send("Internal Server Error");
                         }
                         // Set session variables upon successful signup
-                        // req.session.userID = results.insertId; // Assuming insertId is the ID of the newly inserted user
-                        // req.session.username = username;
+                        req.session.userID = results.insertId; // Assuming insertId is the ID of the newly inserted user
+                        req.session.username = username;
 
                         res.redirect("/login");
                     }

@@ -25,7 +25,6 @@
                         </a>
                     </li>
                     <li>
-                        <% if(locals.isLoggedIn) { %>
                         <a href="/poems" >
                             <div class="menu-item">
                                 <lord-icon
@@ -40,20 +39,49 @@
                             </div>
                         </a>
                     </li>
-                    <li class="nav-link"><a href="/profile/<%= locals.userID %>">Profile</a></li>
-                    <li class="nav-link"><a href="/logout">Logout</a></li>
+                    <% if(locals.isLoggedIn) { %>
+                        <li>
+                            <a href="/profile" >
+                                <div class="menu-item">
+                                    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                                    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                                    <lord-icon
+                                        src="https://cdn.lordicon.com/bgebyztw.json"
+                                        trigger="hover"
+                                        colors="primary:#121331,secondary:#00415a"
+                                        style="width:35px;height: 35px">
+                                    </lord-icon>
+                                    <p id="home-link"><%= username %></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/logout" >
+                                <div class="menu-item">
+                                    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                                    <lord-icon
+                                        src="https://cdn.lordicon.com/gwvmctbb.json"
+                                        trigger="hover"
+                                        stroke="light"
+                                        colors="primary:#121331,secondary:#00415a"
+                                        style="width:35px;height:35px">
+                                    </lord-icon>
+                                    <p id="home-link">Logout</p>
+                                </div>
+                            </a>
+                        </li>
                     <% } else {%>
-                    <li class="dropdown-container">
-                        <lord-icon
-                            src="https://cdn.lordicon.com/xzalkbkz.json"
-                            style="width:35px;height:35px">
-                        </lord-icon>
-                        <p>Profile</p>
-                        <div class="dropdown-content">
-                            <a href="/login">Login</a>
-                            <a href="/signup">SignUp</a>
-                        </div>
-                    </li>
+                        <li class="dropdown-container">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/xzalkbkz.json"
+                                style="width:35px;height:35px">
+                            </lord-icon>
+                            <p>Profile</p>
+                            <div class="dropdown-content">
+                                <a href="/login">Login</a>
+                                <a href="/signup">SignUp</a>
+                            </div>
+                        </li>
                     <% } %>
                 </ul>
             </div>

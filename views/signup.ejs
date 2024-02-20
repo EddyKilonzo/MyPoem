@@ -16,7 +16,7 @@
                         stroke="light"
                         state="hover-swirl"
                         colors="primary:#00415a,secondary:#009bd6"
-                        style="width:100px;height:100px">guyufja
+                        style="width:100px;height:100px">
                     </lord-icon>
                 </div>
                 
@@ -27,35 +27,60 @@
                 <hr style="height: 3px; background-color: #00415a;margin-top: 10px;margin-bottom: 10px; margin: 30px;">
                 <% if (error) { %>
                     <p class="error-message"><%= errorMessage %></p>
-                <% } %>
-                <div class="input">
-                    <div class="input-container">
-                        <i class="fa-solid fa-user"></i>
-                        <input type="email" name="email"  required placeholder="Enter Email..." >
-                    </div>
-                    <div class="input-container">
-                        <i class="fa-solid fa-user"></i>
-                        <input type="text" name="username"  required placeholder="Enter Username...">
-                    </div>
-                    <div class="input-container">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" name="password"   minlength="8" required   placeholder="Enter Password..." >
-                    </div>
-                    <div class="input-container">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" name="confirmPassword"   minlength="8" required placeholder="Confirm Password..." >
-                    </div>
-                    <div class="Remember">
-                        <input  type="checkbox" name="" id="" required>
-                        <p style="font-family: monospace; font-size: 14px; margin-left: 5px;">I agree with Privacy and policy</p>
-                       
-                    </div>
+                        
+                        <div class="input">
+                            <div class="input-container">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="email" name="email" value="<%= email %>"  required placeholder="Enter Email..." >
+                            </div>
+                            <div class="input-container">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" name="username"  value="<%= username %>" required placeholder="Enter Username...">
+                            </div>
+                            <div class="input-container">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" name="password"  value="<%= password %>"  minlength="8" required   placeholder="Enter Password..." >
+                            </div>
+                            <div class="input-container">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" name="confirmPassword" value="<%= password %>"  minlength="8" required placeholder="Confirm Password..." >
+                            </div>
+                            <div class="Remember">
+                                <input  type="checkbox" name="" id="" required>
+                                <p style="font-family: monospace; font-size: 14px; margin-left: 5px;">I agree with Privacy and policy</p>
+                        </div>
+                    <% } else { %> 
+                        <div class="input">
+                            <div class="input-container">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="email" name="email"   required placeholder="Enter Email..." >
+                            </div>
+                            <div class="input-container">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" name="username"   required placeholder="Enter Username...">
+                            </div>
+                            <div class="input-container">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" name="password"   minlength="8" required   placeholder="Enter Password..." >
+                            </div>
+                            <div class="input-container">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" name="confirmPassword"   minlength="8" required placeholder="Confirm Password..." >
+                            </div>
+                            <div class="Remember">
+                                <input  type="checkbox" name="" id="" required>
+                                <p style="font-family: monospace; font-size: 14px; margin-left: 5px;">I agree with Privacy and policy</p>
+                        </div>
+                        
+                    <% } %> 
                     <div class="info">
                         <input type="submit" value="Signup" class="btn" style="letter-spacing: 3px;">
                         <p>Already have an account? <a href="/login">Login</a> </p>
                     </div>
                     
+                    
                 </div>
+                
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                     <path fill="#00415a" fill-opacity="1" d="M0,192L1440,32L1440,320L0,320Z"></path>
                   </svg>

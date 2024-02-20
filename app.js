@@ -22,7 +22,7 @@ connection.connect((err) => {
 //static files
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false})); 
 
 
 //templating engine
@@ -177,6 +177,27 @@ app.get('/poems', (req, res) => {
   res.render('poems.ejs', {});
   
 })
+app.get('/profile/:username', (req, res) => {
+    if(res.locals.isLoggedIn && req.session.username === (req.params.username)) {
+        connection.query(
+            `SELECT * FROM users WHERE username = ?`,
+            [req.params.username],
+            (err, user) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.render('profile.ejs',{user:user[0]});
+                    console.log(user);
+                }                
+            }
+        )
+    } else {
+        console.log('not logged in or id mismatch');
+        res.redirect('/poems');
+
+    }
+    
+  });
 
 app.get('*', (req, res) => {
     res.render('404.ejs')

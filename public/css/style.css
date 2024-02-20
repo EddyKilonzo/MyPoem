@@ -10,7 +10,7 @@
         scroll-behavior: smooth;
     }
     body{
-        background-color: rgb(206, 206, 206);
+        background-color: rgb(206, 206, 206, 0.5);
     }
 
 *, ::before, ::after {
@@ -345,4 +345,21 @@ footer .copyright p {
 .Remember a:hover {
     color: var(--secondary-color);
     transition: 0.5s ease-in-out;
+}
+/*profile page */
+.container_profile {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    margin: 10px;
+    
+}
+.container_profile .card_profile {
+    background-color: #f9f9f9;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;    
+    display: flex;
+    align-items:flex-start;
+    justify-content: left;
+
 }

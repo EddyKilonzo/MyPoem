@@ -5,6 +5,28 @@
         --secondary-color:#009bd6;
         --headers:	#001f2b;
         --links:#00b8ff;
+        
+        --button: {
+            width: 300px;
+            height: 35px;
+            border: none ;
+            border-radius: 10px;
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+        -webkit-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+        -moz-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+        
+    
+}
+.btn:hover {
+    background-color: var(--secondary-color);
+    transition: 0.5s ease-in-out;
+}
     }
     html{
         scroll-behavior: smooth;
@@ -203,13 +225,17 @@ footer .container .left button {
     margin-top: 10px;
     padding: 10px;
     color: white;
-    box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.25);
+    box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+-webkit-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+-moz-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
 }
 footer .container .left button:hover {
     background-color: var(--secondary-color);
     color: var(--primary-color);
     transition: 0.5s ease-in-out;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+-webkit-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+-moz-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
     
 }
 footer .container .center li {
@@ -253,10 +279,10 @@ footer .copyright p {
 .container_form form {
     background-color: rgb(240, 240, 240, 0.9);
     border-radius: 10px;
-    box-shadow:
-    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.2),
-    6.8px 6.8px 5.2px rgba(0, 0, 0, 0.25),
-    16.8px 16.8px 25.2px rgba(0, 0, 0, 0.25);
+    
+    box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+    -webkit-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+    -moz-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
 }
 .container_form .ani1 {
     display: flex;
@@ -301,24 +327,7 @@ footer .copyright p {
     padding-left: 45px; /* Adjust the padding-left to make space for the icon */
 
 }
-.btn {
-    width: 300px;
-    height: 35px;
-    border: none ;
-    border-radius: 10px;
-    border: none;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.2);  
-    
-}
-.btn:hover {
-    background-color: var(--secondary-color);
-    transition: 0.5s ease-in-out;
-}
+
 .input .info p {
     font-size: 14px;
     font-family: monospace;
@@ -349,8 +358,8 @@ footer .copyright p {
 /*profile page */
 .container_profile {
     display: grid;
-    grid-template-columns: 30% 40% 30%;
-    margin: 10px;
+    grid-template-columns: 25% 50% 25%;
+    
     
 }
 .container_profile .card_profile {
@@ -361,5 +370,44 @@ footer .copyright p {
     display: flex;
     align-items:flex-start;
     justify-content: left;
-
+    box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+-webkit-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+-moz-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+}
+.container_profile .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    
+}
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px dotted var(--primary-color);
+}
+.profile .profile1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    gap: 20px;
+    padding: 1px;
+}
+.profile .profile2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    gap: 43px;
+    padding: 1px;
+    
+}
+.vl {
+    border-left: 2px dotted var(--primary-color);
+    height: 50px;
+  }
+.profile .button {
+ s
 }

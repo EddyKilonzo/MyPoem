@@ -1,9 +1,26 @@
-import  express  from "express";
+import express from "express";
 import mysql from "mysql";
-import session  from "express-session";
+import session from "express-session";
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const app = express();
 const port = 3000;
 
-const app = express(); 
+// Set the view engine to EJS
+app.set('view engine', 'ejs')
+
+// Serve static files
+app.use(express.static('public'))
+app.use(express.static(join(__dirname, 'public')));
+app.use(express.static(join(process.cwd(), 'public')));
+
+// Parse URL-encoded bodies
+app.use(express.urlencoded({extended: false}));
+
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -19,10 +36,8 @@ connection.connect((err) => {
     console.log('Connected to database');
   });
 
-//static files
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
-app.use(express.urlencoded({extended: false})); 
+
+
 
 
 //templating engine

@@ -6,23 +6,6 @@
         --headers:	#001f2b;
         --links:#00b8ff;
         
-        --button: {
-            width: 300px;
-            height: 35px;
-            border: none ;
-            border-radius: 10px;
-            border: none;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px;
-            margin-bottom: 20px;
-            margin-top: 10px;
-            box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
-        -webkit-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
-        -moz-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
-        
-    
-}
 .btn:hover {
     background-color: var(--secondary-color);
     transition: 0.5s ease-in-out;
@@ -323,6 +306,7 @@ footer .copyright p {
     transform: translateY(-50%);
 }
 
+
 .input-container input {
     padding-left: 45px; /* Adjust the padding-left to make space for the icon */
 
@@ -355,13 +339,52 @@ footer .copyright p {
     color: var(--secondary-color);
     transition: 0.5s ease-in-out;
 }
+.btn {
+
+    width: 300px;
+    height: 35px;
+    border: none ;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    box-shadow: -9px 16px 32px -6px rgba(0,65,9,0.1);
+-webkit-box-shadow: -9px 16px 32px -6px rgba(0,65,9,0.1);
+-moz-box-shadow: -9px 16px 32px -6px rgba(0,65,9,0.1);
+    
+
+
+}
 /*profile page */
 .container_profile {
     display: grid;
-    grid-template-columns: 25% 50% 25%;
-    
-    
+    grid-template-columns: 27% 50% 23%;
+    height: 100vh; /* This will make the container take up the full viewport height */
+    overflow: hidden; /* This will hide any content that goes beyond the container's boundaries */
 }
+
+.container_profile .left,
+.container_profile .right {
+    position: sticky;
+    top: 0; /* This will make the left and right sections stick to the top of the viewport */
+}
+
+.container_profile .mid {
+    overflow-y: auto; /* This will allow the middle section to scroll vertically */
+}
+.container_profile .mid::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+.container_profile .mid {
+    -ms-overflow-style: none;  /* for Internet Explorer and Edge */
+    scrollbar-width: none;  /* for Firefox */
+    overflow-y: auto;
+}
+
 .container_profile .card_profile {
     background-color: #f9f9f9;
     margin: 20px;
@@ -370,44 +393,100 @@ footer .copyright p {
     display: flex;
     align-items:flex-start;
     justify-content: left;
-    box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
--webkit-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
--moz-box-shadow: -9px 16px 32px -6px rgba(0,0,0,1);
+    box-shadow: -9px 16px 32px -6px rgba(0,65,9,0.4);
+-webkit-box-shadow: -9px 16px 32px -6px rgba(0,65,9,0.4);
+-moz-box-shadow: -9px 16px 32px -6px rgba(0,65,9,0.4);
 }
 .container_profile .left {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     position: sticky;
     
 }
-.profile img {
+
+.profile .img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     border: 2px dotted var(--primary-color);
+    margin-bottom: 5px;
 }
 .profile .profile1 {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 9px;
-    gap: 20px;
+    gap: 10px;
     padding: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .profile .profile2 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 12px;
-    gap: 43px;
-    padding: 1px;
-    
+    display: block;
+    font-size: 10px;
+}
+.profile .profile2 p{
+    text-align: center;
+    margin-bottom: 10px;
 }
 .vl {
     border-left: 2px dotted var(--primary-color);
     height: 50px;
   }
-.profile .button {
- s
+.profile1 input[type=button] {
+    width: 100px;
+    height: 35px;
+    border: none ;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    box-shadow: -9px 16px 32px -6px rgba(0,65,9,0.1);
+-webkit-box-shadow: -9px 16px 32px -6px rgba(0,65,9,0.1);
+-moz-box-shadow: -9px 16px 32px -6px rgba(0,65,9,0.1);
+}
+.profile1 input[type=button]:hover {
+    background-color: var(--secondary-color);
+    transition: 0.5s ease-in-out;
+}
+.profile p {
+    font-size: 14px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: left;
+    
+}
+.socials {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+}
+.socials i {
+    font-size: 22px;
+    color: var(--primary-color);
+    
+}
+.socials1 {
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    gap: 50px;
+}
+.socials1 i {
+    font-size: 26px;
+    color: var(--primary-color);
+    
+}
+.socials1 img {
+    width: 26px;
+    height: 26px;
+}
+.left .card_profile svg {
+    width: 100px;
+    position: relative;
+        
 }
